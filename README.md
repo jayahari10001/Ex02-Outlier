@@ -35,3 +35,11 @@ df1
 df1.shape
 
 sns.boxplot(x="price_per_sqft",data=df1)
+from scipy import stats
+
+z = np.abs(stats.zscore(df['price_per_sqft']))
+df2 = df[(z<3)]
+df2
+
+print(df2.shape)
+sns.boxplot(x="price_per_sqft",data=df2)
