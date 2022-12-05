@@ -72,3 +72,19 @@ df4
 df4.shape
 
 sns.boxplot(x="weight",data=df4)
+sns.boxplot(x="height",data=df3)
+
+q1 = df3['height'].quantile(0.25)
+q3 = df3['height'].quantile(0.75)
+print("First Quantile =",q1,"\nSecond Quantile =",q3)
+
+IQR = q3-q1
+ul = q3+1.5*IQR
+ll = q1-1.5*IQR
+
+df5 =df3[((df3['height']>=ll)&(df3['height']<=ul))]
+df5
+
+df5.shape
+
+sns.boxplot(x="height",data=df5)
