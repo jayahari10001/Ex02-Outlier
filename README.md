@@ -43,3 +43,32 @@ df2
 
 print(df2.shape)
 sns.boxplot(x="price_per_sqft",data=df2)
+df3 = pd.read_csv("height_weight.csv")
+df3
+
+df3.head()
+
+df3.info()
+
+df3.describe()
+
+df3.isnull().sum()
+
+df3.shape
+
+sns.boxplot(x="weight",data=df3)
+
+q1 = df3['weight'].quantile(0.25)
+q3 = df3['weight'].quantile(0.75)
+print("First Quantile =",q1,"\nSecond Quantile =",q3)
+
+IQR = q3-q1
+ul = q3+1.5*IQR
+ll = q1-1.5*IQR
+
+df4 =df3[((df3['weight']>=ll)&(df3['weight']<=ul))]
+df4
+
+df4.shape
+
+sns.boxplot(x="weight",data=df4)
